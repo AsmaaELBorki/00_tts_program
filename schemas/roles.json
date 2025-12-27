@@ -1,0 +1,50 @@
+{
+  "identifier": {
+    "requires": [
+      "nullability",
+      "uniqueness",
+      "stability"
+    ]
+  },
+  "temporal": {
+    "requires": [
+      "canonical_representation",
+      "reporting_window",
+      "allowed_aggregation_levels",
+      "violation_classes"
+    ]
+  },
+  "measurement": {
+    "requires": [
+      "unit",
+      "bounds",
+      "null_semantics",
+      "plausibility"
+    ]
+  },
+  "categorical": {
+    "requires": [
+      "value_domain",
+      "null_semantics"
+    ]
+  },
+  "indicator": {
+    "requires": [
+      "encoding",
+      "null_semantics"
+    ]
+  },
+  "repeated_component": {
+    "requires": [
+      "cardinality",
+      "absence_semantics",
+      "aggregation_rules"
+    ]
+  },
+  "derived": {
+    "requires": [
+      "source_fields",
+      "scope"
+    ]
+  }
+}
