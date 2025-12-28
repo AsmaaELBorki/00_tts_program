@@ -1,6 +1,15 @@
 {
   "installation_date": {
-    "unparseable": "Installation date could not be parsed into a year",
-    "outside_reporting_window": "Installation year falls outside the dataset reporting window"
+    "role": "temporal",
+    "hard_violations": [
+      "unparseable",
+      "outside_reporting_window"
+    ],
+    "soft_violations": [
+      "missing_month_day",
+      "provider_specific_gap"
+    ],
+    "allowed_aggregation_levels": ["year"],
+    "assumption_ref": "docs/data-contract.md#installation_date"
   }
 }

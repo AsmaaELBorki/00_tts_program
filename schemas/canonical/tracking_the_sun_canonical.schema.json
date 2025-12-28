@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tracking The Sun Canonical Schema",
+  "type": "object",
+  "properties": {
+    "installation_year": {
+      "type": "integer",
+      "minimum": 1998,
+      "maximum": 2024,
+      "description": "Canonical installation year derived from raw installation_date. Validated empirically; violations are retained separately."
+    }
+  },
+  "required": ["installation_year"]
+}
