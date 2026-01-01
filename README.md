@@ -248,29 +248,37 @@ Given regime-aware scaling behavior, how unusual is a system and in which direct
 *A single visual diagram representing the analytical architecture is provided below for orientation.  
 The written specifications above constitute the authoritative definition of repository roles and constraints.*
 
-```mermaid
 flowchart TD
 
-    R0["Repo 0<br/><b>Program Canon & Analytical Contracts</b><br/><i>How must the analysis be structured so conclusions about sizing are interpretable and consistent?</i>"]
+    R0["Repo 0
+Program Canon & Analytical Contracts
+How must the analysis be structured so conclusions about sizing are interpretable and consistent?"]
 
-    R1["Repo 1<br/><b>Data Generation & Measurement Process</b><br/><i>What do the data represent and what limits do reporting processes impose?</i>"]
+    R1["Repo 1
+Data Generation & Measurement Process
+What do the data represent and what limits do reporting processes impose?"]
 
-    R2["Repo 2<br/><b>Canonical System Size Baselines</b><br/><i>What system size is typical for residential solar in California?</i>"]
+    R2["Repo 2
+Canonical System Size Baselines
+What system size is typical for residential solar in California?"]
 
-    R3["Repo 3<br/><b>Within-Size Structural Configuration</b><br/><i>When size is fixed, how can system designs still differ meaningfully?</i>"]
+    R3["Repo 3
+Within-Size Structural Configuration
+When size is fixed, how can system designs still differ meaningfully?"]
 
-    R4["Repo 4<br/><b>Scaling Behavior, Regimes & Deviation Structure</b><br/><i>How does size scale in practice and where do stable deviation patterns emerge?</i>"]
+    R4["Repo 4
+Scaling Behavior, Regimes & Deviation Structure
+How does size scale in practice and where do stable deviation patterns emerge?"]
 
-    R5["Repo 5<br/><b>Abnormality, Directionality & Sizing Risk</b><br/><i>Is a system unusually sized for its context, and in which direction?</i>"]
+    R5["Repo 5
+Abnormality, Directionality & Sizing Risk
+Is a system unusually sized for its context, and in which direction?"]
 
     R0 --> R1
     R1 --> R2
     R2 --> R3
     R3 --> R4
     R4 --> R5
-
-
-
 ---
 
 ## Governing Invariant
