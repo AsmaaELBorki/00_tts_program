@@ -248,14 +248,14 @@ Given regime-aware scaling behavior, how unusual is a system and in which direct
 *A single visual diagram representing the analytical architecture is provided below for orientation.  
 The written specifications above constitute the authoritative definition of repository roles and constraints.*
 
+Repo 0 ──► Repo 1 ──► Repo 2 ──► Repo 3 ──► Repo 4 ──► Repo 5
 
-## Architecture Overview
-
-Repo 0  ──►  Repo 1  ──►  Repo 2  ──►  Repo 3  ──►  Repo 4  ──►  Repo 5
-
-Program       Data         Size         Structural      Scaling &       Abnormality,
-Canon &       Generation   Baselines    Configuration   Regimes          Directionality
-Contracts     & Measurement
+Repo 0: **Program Canon & Analytical Contracts**  
+Repo 1: **Data Generation & Measurement Process**  
+Repo 2: **Canonical System Size Baselines**  
+Repo 3: **Within-Size Structural Configuration**  
+Repo 4: **Scaling Behavior, Regimes & Deviation Structure**  
+Repo 5: **Abnormality, Directionality & Sizing Risk**
 
 
 ## Governing Invariant
