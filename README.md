@@ -249,41 +249,13 @@ Given regime-aware scaling behavior, how unusual is a system and in which direct
 The written specifications above constitute the authoritative definition of repository roles and constraints.*
 
 
-That single missing line explains **everything** you’re seeing.
+## Architecture Overview
 
----
-```mermaid
-flowchart TD
+Repo 0  ──►  Repo 1  ──►  Repo 2  ──►  Repo 3  ──►  Repo 4  ──►  Repo 5
 
-    R0["Repo 0
-Program Canon & Analytical Contracts
-How must the analysis be structured so conclusions about sizing are interpretable and consistent?"]
-
-    R1["Repo 1
-Data Generation & Measurement Process
-What do the data represent and what limits do reporting processes impose?"]
-
-    R2["Repo 2
-Canonical System Size Baselines
-What system size is typical for residential solar in California?"]
-
-    R3["Repo 3
-Within-Size Structural Configuration
-When size is fixed, how can system designs still differ meaningfully?"]
-
-    R4["Repo 4
-Scaling Behavior, Regimes & Deviation Structure
-How does size scale in practice and where do stable deviation patterns emerge?"]
-
-    R5["Repo 5
-Abnormality, Directionality & Sizing Risk
-Is a system unusually sized for its context, and in which direction?"]
-
-    R0 --> R1
-    R1 --> R2
-    R2 --> R3
-    R3 --> R4
-    R4 --> R5
+Program       Data         Size         Structural      Scaling &       Abnormality,
+Canon &       Generation   Baselines    Configuration   Regimes          Directionality
+Contracts     & Measurement
 
 
 ## Governing Invariant
