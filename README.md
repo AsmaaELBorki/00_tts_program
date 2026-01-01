@@ -248,6 +248,11 @@ Given regime-aware scaling behavior, how unusual is a system and in which direct
 *A single visual diagram representing the analytical architecture is provided below for orientation.  
 The written specifications above constitute the authoritative definition of repository roles and constraints.*
 
+
+That single missing line explains **everything** you’re seeing.
+
+---
+```mermaid
 flowchart TD
 
     R0["Repo 0
@@ -279,7 +284,7 @@ Is a system unusually sized for its context, and in which direction?"]
     R2 --> R3
     R3 --> R4
     R4 --> R5
----
+
 
 ## Governing Invariant
 
