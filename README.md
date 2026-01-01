@@ -1,133 +1,279 @@
-# Tracking the Sun — Analytical Architecture  
-## Residential Solar Focus
+# Tracking the Sun — Program Canon and Analytical Architecture
 
-This repository does not contain analysis.  
-It defines the conditions under which analysis is allowed to happen.
+## The Question This Program Is Built to Answer
 
-**This program is explicitly scoped to residential solar installations.**  
-That decision is foundational. It determines which records are admissible, how baselines are constructed, how regimes are defined, and what downstream claims are even meaningful. Nothing in this architecture should be read as applying to commercial, government, or utility-scale systems unless explicitly stated otherwise.
+**Given a residential solar installation in California, is this system sized appropriately for its context — or does it deviate in a way that plausibly indicates oversizing, undersizing, or elevated design risk?**
 
-Tracking the Sun is treated here as a long-lived analytical object rather than a one-off dataset. The intent is to establish stable structure **before** questions are asked, so that downstream work does not diverge in assumptions, semantics, or validation logic.
+Answering this question reliably is not trivial.  
+Raw system size alone is not informative without context: when the system was installed, where it is located, how residential systems typically scale, and how much design variation is normal at a given size all matter.
 
-This repository defines a **single trusted analytical substrate** that downstream repositories depend on. Schema decisions, column semantics, scope boundaries, and analytical constraints are declared here and inherited elsewhere.
+This program is built to answer that question **systematically**, by decomposing it into ordered analytical steps that make deviation interpretable rather than arbitrary.
 
 ---
 
-## Architectural Framing
+## Where This Analysis Is Useful
 
-The NREL *Tracking the Sun* dataset spans more than two decades of distributed solar installations across the United States, beginning in the late 1990s and extending into the present.
+The outputs of this program are applicable wherever **residential solar sizing decisions need to be evaluated, compared, or flagged without assuming intent or causality**, including:
 
-Across that time horizon, installation practices, reporting standards, technologies, incentive structures, and market conditions change. Those changes are embedded in the data. If they are not explicitly accounted for, analytical results can conflate structurally different systems into patterns that appear coherent but are not analytically stable.
+- **Homeowners and advisors** assessing whether a system appears unusually large or small relative to comparable installations  
+- **Installers and designers** benchmarking system sizing practices against observed norms  
+- **Financiers, insurers, and analysts** identifying installations with elevated uncertainty or atypical design profiles  
+- **Researchers and market analysts** studying how residential solar systems scale in practice across time and geography  
 
-This architecture exists to control for that.
-
-Crucially, while the source dataset includes **multiple customer segments**, this program does **not** treat them as interchangeable. Residential, commercial, and other installation types operate under different economic constraints, design norms, incentive structures, and scaling behavior.
-
-**Accordingly, the analytical scope of this program is limited to residential solar installations**, defined operationally as records where:
-
-`customer_segment == "RES"`
-
-All baselines, distributions, regime definitions, deviation logic, and predictive exploration in downstream repositories are conditioned on this population. Any work that departs from this scope must state so explicitly.
-
-Rather than approaching the dataset as a single analytical surface, the work is decomposed into multiple repositories. Each repository is scoped around a specific class of questions, produces defined outputs, and passes those outputs forward without redefining assumptions.
-
-Each repository must be internally coherent while remaining legible as part of the larger system.
+The program does not render judgments or prescribe actions.  
+It produces **context-aware signals** that help distinguish normal design variation from atypical sizing patterns.
 
 ---
 
-## Repository Roles and Relationships
+## Purpose of This Repository
 
-The architecture is organized as a sequence of repositories operating at distinct analytical layers. Repositories are related through dependency, not containment.
+This repository defines the **canonical structure, scope, and analytical logic** of the *Tracking the Sun* program.
 
-### Repo 1 — System Size Determinants
+It does **not** contain analysis.  
+Its role is to make explicit **what questions are being asked, why they are ordered the way they are, and how downstream outputs remain internally consistent and defensible**.
 
-Establishes descriptive grounding.
-
-This repository focuses on contextual, technical, and temporal factors associated with observed **residential system size**. Its outputs define baseline features and reference frames that are consumed by later repositories.
-
-No predictive claims are made here.
+This repository exists so that all subsequent work can be understood as part of a **single, coherent analytical system**, rather than a collection of disconnected analyses.
 
 ---
 
-### Repo 2 — System Configuration & Inverter Architecture
+## Program Value
 
-Builds on size-conditioned baselines defined in Repo 1.
+This program is designed to produce a **reliable analytical substrate** for understanding residential solar system sizing behavior in California.
 
-This repository examines how **residential systems** of comparable size are configured in practice, with emphasis on inverter count, capacity allocation, and installer behavior as structural signals.
+Its value lies in:
 
-Outputs describe configuration patterns conditional on size and context and are passed forward unchanged.
+- Establishing **defensible reference frames** for what constitutes “typical” system size  
+- Separating **structure, scaling behavior, and evaluation** so conclusions are interpretable  
+- Enabling **abnormality and sizing-risk assessment** (both over-izing and under-sizing) without inventing structure downstream  
+- Making analytical decisions **transparent, auditable, and reusable**
 
----
-
-### Repo 3 — Scaling, Regimes, and Deviation
-
-Consumes baselines and configuration features defined in Repos 1 and 2.
-
-This repository formalizes expected scaling behavior, identifies regime formation, and characterizes deviation across time and geography **within the residential segment**. The focus is on pattern structure rather than explanation.
-
-Outputs define deviation surfaces and regime boundaries used downstream.
+The program prioritizes **internal coherence and analytical discipline**, allowing later insights to rest on clearly defined foundations rather than ad hoc comparisons.
 
 ---
 
-### Repo 4 — Predictive Signals, Risk, and Oversizing
+## Program Scope
 
-Operates strictly within constraints established upstream.
+- **Dataset:** NREL *Tracking the Sun* (publicly released)
+- **Geographic focus:** **California only**
+- **Population:** Residential solar systems only  
+  (`customer_segment == "RES"`)
 
-This repository uses features defined earlier to explore deviation likelihood, directionality, and potential risk **for residential systems**. Predictive work is bounded by prior definitions rather than introducing new interpretations of the data.
-
----
-
-## Treatment of Time
-
-Time is explicitly scoped per repository.
-
-- In **Repo 1** and **Repo 2**, time functions as conditioning context. It is used for cohorting, comparison across periods, and framing descriptive baselines.
-- In **Repo 3**, time is treated as an evolutionary signal, enabling identification of regime formation, persistence, and structural change.
-- In **Repo 4**, time is introduced as a predictive feature, constrained by upstream definitions rather than reinterpreted.
-
-This separation prevents descriptive patterns from being overstated as evolutionary claims or predictive signals without justification.
+All findings, baselines, structures, and evaluations produced by this program apply **only** to residential solar installations in California.
 
 ---
 
-## The Analytical Substrate
+## Analytical Posture and Boundaries
 
-The analytical substrate defined by this repository is conceptual rather than executable.
+- Analyses are **descriptive and structural by design**
+- Evaluation of sizing abnormality considers **both undersizing and oversizing**
+- Predictive and evaluative work is permitted **only within upstream constraints**
+- Measurement limits are respected as declared by the dataset owners
 
-It consists of:
-- validated schema decisions  
-- consistent column semantics  
-- documented assumptions and exclusions  
+### Non-Goals
 
-These are treated as contracts. Downstream repositories inherit them rather than re-validating raw data, unless explicitly stated otherwise. This keeps analytical effort focused on reasoning rather than repeated preprocessing.
+- No causal attribution  
+- No policy evaluation  
+- No counterfactual claims  
+- No inference beyond declared measurement limits  
 
-Supporting material lives in the `docs/` directory and includes:
-- data contracts  
-- dataset overview  
-- repository dependency definitions  
-
-These documents define rules and constraints, not analysis.
+These boundaries are intentional and ensure that downstream results remain interpretable and robust.
 
 ---
 
-## Scope Boundaries
+## Data Ownership and Provenance
 
-This architecture is observational rather than causal.  
-It prioritizes analytical reasoning over prescription.  
-It is modular by design to support extension without structural breakage.
+This program does **not** own or generate the underlying data.
 
-**Unless explicitly stated, all analytical work in this program assumes a residential-only population.**  
-Results are not generalized beyond residential solar installations.
+All statements about data collection, reporting, and measurement are derived **exclusively from declarations made by the dataset owners (NREL)** and accompanying public documentation.
+
+The data-generation, recording, and reporting process — including known limitations, incentives, omissions, and comparability constraints — is documented in **Repo 1**.
+
+No repository in this program is permitted to reinterpret or extend those declarations.
 
 ---
 
-## Status
+## Analytical Architecture and Logical Ordering
 
-The architecture is under active development.
+The program is organized as a strictly ordered analytical stack.  
+Each repository answers a **real-world applied question** and a corresponding **analytical question**, and establishes **preconditions** for downstream work.
 
-Structural decisions are stabilizing.  
-Analytical content evolves within those constraints.
+The written specifications below constitute the authoritative definition of repository roles.  
+Any diagrams are representational only.
+
+---
+
+## Repository Stack (Canonical)
+
+### Repo 0 — Program Canon and Analytical Contracts  
+
+**Applied question:**  
+How should a multi-stage analysis be structured so that conclusions about residential solar sizing are interpretable, auditable, and internally consistent?
+
+**Analytical question:**  
+What global rules, boundaries, and dependencies govern all downstream analysis?
+
+**Responsibilities:**
+- Define scope, value, and analytical posture  
+- Freeze repository roles and dependencies  
+- Prevent post-hoc reinterpretation of structure  
+
+**Produces:**  
+- Program-level constraints and contracts  
+
+**Prohibited:**  
+- Analysis of data  
+- Introduction of new analytical objects  
+
+---
+
+### Repo 1 — Data Generation and Measurement Process  
+
+**Applied question:**  
+What do these data actually represent, and what limits do their recording and reporting processes place on interpretation?
+
+**Analytical question:**  
+How were the data recorded, reported, and structured as declared by the dataset owners?
+
+**Responsibilities:**
+- Document declared data-generation processes  
+- Record known biases, omissions, and comparability limits  
+- Establish measurement validity constraints  
+
+**Produces:**  
+- Measurement admissibility rules  
+- Explicit inference prohibitions  
+
+**Prohibited:**  
+- Speculation beyond declared documentation  
+- Analytical transformation or modeling  
+
+---
+
+### Repo 2 — Canonical System Size Baselines  
+
+**Applied question:**  
+What system size is typical for residential solar installations in California, given when and where they were installed?
+
+**Analytical question:**  
+What is the expected residential system size in a given context?
+
+**Responsibilities:**
+- Establish defensible size baselines  
+- Quantify uncertainty and temporal drift  
+
+**Produces:**  
+- Expected size distributions  
+- Uncertainty bounds  
+
+**Prohibited:**  
+- Structural interpretation  
+- Configuration analysis  
+- Prediction  
+
+---
+
+### Repo 3 — Within-Size Structural Configuration  
+
+**Applied question:**  
+When two residential systems are similar in size, in what meaningful ways can their designs still differ?
+
+**Analytical question:**  
+When system size is held constant, what system characteristics vary in structured, non-trivial ways?
+
+**Responsibilities:**
+- Identify structural degrees of freedom at fixed size  
+- Define configuration equivalence classes  
+
+**Produces:**  
+- Structural constraints  
+- Admissible variation space  
+
+**Prohibited:**  
+- Scaling analysis  
+- Regime formation  
+- Risk evaluation  
+
+---
+
+### Repo 4 — Scaling Behavior, Regimes, and Deviation Structure  
+
+**Applied question:**  
+How does residential solar system size scale in practice, and what forms of deviation are typical versus unusual?
+
+**Analytical question:**  
+Given size and structure, how does system behavior scale, and where do stable regimes and deviation surfaces emerge?
+
+**Responsibilities:**
+- Formalize scaling behavior  
+- Identify regime boundaries  
+- Define deviation geometry  
+
+**Produces:**  
+- Scaling regimes  
+- Deviation surfaces  
+- Regime membership mappings  
+
+**Prohibited:**  
+- Risk scoring  
+- Abnormality evaluation  
+- Prediction  
+
+---
+
+### Repo 5 — Abnormality, Directionality, and Sizing Risk Evaluation  
+
+**Applied question:**  
+Is a given residential solar system unusually sized for its context, and does that deviation plausibly indicate oversizing, undersizing, or benign variation?
+
+**Analytical question:**  
+Given regime-aware scaling behavior, how unusual is a system and in which direction does the deviation occur?
+
+**Responsibilities:**
+- Evaluate deviation likelihood  
+- Assess directional abnormality (over- and under-sizing)  
+- Assign sizing-risk indicators  
+
+**Produces:**  
+- Abnormality scores  
+- Directional sizing-risk flags  
+
+**Prohibited:**  
+- Introduction of new structure  
+- Reinterpretation of upstream definitions  
+
+---
+
+## Architecture Diagram
+
+*A single visual diagram representing the analytical architecture is provided below for orientation.  
+The written specifications above constitute the authoritative definition of repository roles and constraints.*
+
+```mermaid
+flowchart TD
+
+    R0["Repo 0<br/><b>Program Canon & Analytical Contracts</b><br/><i>How must the analysis be structured so conclusions about sizing are interpretable and consistent?</i>"]
+
+    R1["Repo 1<br/><b>Data Generation & Measurement Process</b><br/><i>What do the data represent and what limits do reporting processes impose?</i>"]
+
+    R2["Repo 2<br/><b>Canonical System Size Baselines</b><br/><i>What system size is typical for residential solar in California?</i>"]
+
+    R3["Repo 3<br/><b>Within-Size Structural Configuration</b><br/><i>When size is fixed, how can system designs still differ meaningfully?</i>"]
+
+    R4["Repo 4<br/><b>Scaling Behavior, Regimes & Deviation Structure</b><br/><i>How does size scale in practice and where do stable deviation patterns emerge?</i>"]
+
+    R5["Repo 5<br/><b>Abnormality, Directionality & Sizing Risk</b><br/><i>Is a system unusually sized for its context, and in which direction?</i>"]
+
+    R0 --> R1
+    R1 --> R2
+    R2 --> R3
+    R3 --> R4
+    R4 --> R5
 
 
+---
 
+## Governing Invariant
 
+> **No repository is permitted to answer a question whose analytical preconditions have not already been settled upstream.**
 
+This invariant governs all work in the *Tracking the Sun* program.
