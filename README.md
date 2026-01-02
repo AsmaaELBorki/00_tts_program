@@ -1,4 +1,4 @@
-# Tracking the Sun — Program Canon and Analytical Architecture
+# Tracking the Sun (TTS) — Program Canon and Analytical Architecture
 
 ## The Question This Program Is Built to Answer
 
