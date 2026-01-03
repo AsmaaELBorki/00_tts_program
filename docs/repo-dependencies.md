@@ -24,7 +24,20 @@ Dependencies define:
 
 A repository may depend on **declared outputs** from an upstream repository, but never on its internal implementation or intermediate reasoning.
 
-Only declared outputs are trusted.
+Only declared outputs that have been **promoted to canonical artifacts** are trusted for cross-repository use.
+
+---
+
+## Program-Level Dependencies
+
+The *Tracking the Sun* program includes a **canonical artifacts repository** that mediates all cross-repository data dependencies.
+
+The artifacts repository:
+- stores canonical analytical outputs produced upstream
+- replaces manual passing of files between repositories
+- enforces continuity by freezing agreed-upon results
+
+Analytical repositories depend on upstream repositories **via artifacts**, not via repo-local outputs.
 
 ---
 
@@ -97,7 +110,7 @@ Repo 2 does not:
 - evaluate abnormality
 - make predictive claims
 
-Outputs from Repo 2 establish the size reference frame for all downstream work.
+Declared outputs from Repo 2 are **promoted to canonical artifacts** and form the size reference frame for all downstream work.
 
 ---
 
@@ -112,7 +125,7 @@ What structural degrees of freedom exist at fixed size, and which variations are
 **Depends on:**
 - Repo 0 governance
 - Repo 1 measurement constraints
-- Repo 2 size baselines
+- Repo 2 size baselines (via canonical artifacts)
 
 **Defines:**
 - configuration equivalence classes
@@ -122,6 +135,7 @@ Repo 3 does not:
 - redefine size
 - analyze scaling
 - evaluate risk or abnormality
+- re-derive upstream baselines
 
 Its outputs describe **structure conditional on size**, not outcomes.
 
@@ -138,7 +152,7 @@ How does size interact with structure across time and geography to produce regim
 **Depends on:**
 - Repo 0 governance
 - Repo 1 constraints
-- Repo 2 baselines
+- Repo 2 baselines (via artifacts)
 - Repo 3 structural definitions
 
 **Defines:**
@@ -162,7 +176,7 @@ How likely is observed deviation, and when does it plausibly indicate sizing ris
 **Depends on:**
 - Repo 0 governance
 - Repo 1 measurement constraints
-- Repo 2–4 declared outputs
+- Repo 2–4 declared outputs (via canonical artifacts)
 
 **Defines:**
 - abnormality measures
@@ -179,11 +193,12 @@ Repo 5 does not:
 ## Dependency Rules (Binding)
 
 - Dependencies are **additive**, not circular
-- Outputs flow forward only
+- Analytical logic flows forward only
 - Assumptions are inherited, not recreated
-- If a new shared concept is required, it must be defined upstream first
+- Cross-repository data dependencies are mediated through canonical artifacts
+- If a new shared concept is required, it must be defined upstream and promoted explicitly
 
-Changes to Repo 0 or Repo 1 may invalidate downstream assumptions and require review.
+Changes to Repo 0, Repo 1, or canonical artifacts may invalidate downstream assumptions and require review.
 
 ---
 
@@ -192,5 +207,4 @@ Changes to Repo 0 or Repo 1 may invalidate downstream assumptions and require re
 This document defines **inferential dependency**, not execution order.
 
 Repositories may be executed independently for development or testing,  
-but analytical conclusions are valid only when dependency relationships are respected.
-
+but analytical conclusions are valid only when dependency relationships and artifact contracts are respected.

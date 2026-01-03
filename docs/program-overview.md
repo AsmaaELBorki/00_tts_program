@@ -65,6 +65,21 @@ This prevents post-hoc justification and ensures that conclusions are conditiona
 
 ---
 
+## Why Canonical Artifacts Are Used
+
+As cross-repository dependencies increased, passing files manually between repositories became a source of ambiguity and semantic drift.
+
+The canonical artifacts repository exists to:
+- freeze agreed-upon analytical results
+- enforce continuity across analytical stages
+- prevent silent modification of upstream outputs
+- make dependencies explicit rather than implicit
+
+Artifacts do not introduce new logic or analytical authority.  
+They serve as a shared analytical memory, allowing downstream reasoning to proceed without re-derivation or reinterpretation.
+
+---
+
 ## Why Outputs Are Passed Unchanged
 
 Each repository produces outputs that are consumed downstream **without reinterpretation**.
@@ -78,6 +93,13 @@ By passing outputs unchanged:
 - errors are easier to locate
 - uncertainty remains visible
 - responsibility for interpretation is localized
+
+As the program matured, this principle was formalized through the introduction of a canonical artifacts repository.
+
+Not all outputs are passed downstream.  
+Only outputs that have been explicitly promoted to artifacts—because their grain, semantics, and ownership are stable—are treated as fixed inputs by downstream repositories.
+
+Exploratory or intermediate outputs remain local to their producing repository and are not relied upon elsewhere.
 
 If an output is insufficient, the correct response is to revise the upstream repository—not to patch the downstream one.
 
@@ -121,3 +143,7 @@ Those functions live elsewhere by design.
 The architecture is active and stabilized.
 
 Changes to structure are introduced deliberately, documented explicitly, and propagated through the program rather than applied locally.
+
+Propagation occurs through regeneration of upstream repositories and updates to canonical artifacts, not through local downstream modification.
+
+

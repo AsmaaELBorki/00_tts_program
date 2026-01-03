@@ -27,12 +27,50 @@ It produces **context-aware signals** that help distinguish normal design variat
 
 ## Purpose of This Repository
 
-This repository defines the **canonical structure, scope, and analytical logic** of the *Tracking the Sun* program.
+This repository defines the **canonical analytical questions, scope, ordering, and logical constraints** of the *Tracking the Sun* program.
 
-It does **not** contain analysis.  
-Its role is to make explicit **what questions are being asked, why they are ordered the way they are, and how downstream outputs remain internally consistent and defensible**.
+It does **not** contain analysis or data products.
+
+Its role is to make explicit:
+- what questions are being asked  
+- why they are ordered the way they are  
+- what analytical preconditions govern downstream work  
 
 This repository exists so that all subsequent work can be understood as part of a **single, coherent analytical system**, rather than a collection of disconnected analyses.
+
+---
+
+## Program-Level Repositories
+
+The *Tracking the Sun* program is governed by **two program-level repositories**, each with distinct and non-overlapping authority.
+
+### Repo 0 — Program Canon (this repository)
+
+Defines the **analytical logic of the program**:
+- core questions
+- scope and boundaries
+- analytical ordering
+- prohibitions and invariants
+
+Repo 0 governs **how analysis is allowed to proceed**, but does not own data or analytical outputs.
+
+---
+
+### Canonical Artifacts Repository
+
+Serves as the **single source of truth for cross-repository analytical outputs**.
+
+It:
+- stores canonical artifacts produced by upstream analytical repositories  
+- enforces continuity across analytical stages  
+- replaces manual cross-repo inputs with explicit data contracts  
+
+The artifacts repository:
+- contains no analysis or logic  
+- does not determine analytical questions  
+- freezes agreed-upon analytical results so downstream repositories can proceed without re-derivation or ambiguity  
+
+Repo 0 and the Artifacts Repository together define the **constitutional layer** of the program.
 
 ---
 
@@ -43,11 +81,9 @@ This program is designed to produce a **reliable analytical substrate** for unde
 Its value lies in:
 
 - Establishing **defensible reference frames** for what constitutes “typical” system size  
-- Separating **structure, scaling behavior, and evaluation** so conclusions are interpretable  
-- Enabling **abnormality and sizing-risk assessment** (both over-izing and under-sizing) without inventing structure downstream  
+- Separating **measurement, structure, scaling behavior, and evaluation** so conclusions are interpretable  
+- Enabling **abnormality and sizing-risk assessment** (both over-sizing and under-sizing) without inventing structure downstream  
 - Making analytical decisions **transparent, auditable, and reusable**
-
-The program prioritizes **internal coherence and analytical discipline**, allowing later insights to rest on clearly defined foundations rather than ad hoc comparisons.
 
 ---
 
@@ -76,8 +112,6 @@ All findings, baselines, structures, and evaluations produced by this program ap
 - No counterfactual claims  
 - No inference beyond declared measurement limits  
 
-These boundaries are intentional and ensure that downstream results remain interpretable and robust.
-
 ---
 
 ## Data Ownership and Provenance
@@ -94,39 +128,20 @@ No repository in this program is permitted to reinterpret or extend those declar
 
 ## Analytical Architecture and Logical Ordering
 
-The program is organized as a strictly ordered analytical stack.  
-Each repository answers a **real-world applied question** and a corresponding **analytical question**, and establishes **preconditions** for downstream work.
+The program is organized as a **strictly ordered analytical stack**.
 
-The written specifications below constitute the authoritative definition of repository roles.  
-Any diagrams are representational only.
+- **Repo 0** defines analytical logic and constraints  
+- **The Artifacts Repository** defines canonical analytical outputs and data continuity  
+
+All analytical repositories depend on **both**.
+
+Each analytical repository answers a **real-world applied question** and a corresponding **analytical question**, and establishes **preconditions** for downstream work.
 
 ---
 
 ## Repository Stack (Canonical)
 
-### Repo 0 — Program Canon and Analytical Contracts  
-
-**Applied question:**  
-How should a multi-stage analysis be structured so that conclusions about residential solar sizing are interpretable, auditable, and internally consistent?
-
-**Analytical question:**  
-What global rules, boundaries, and dependencies govern all downstream analysis?
-
-**Responsibilities:**
-- Define scope, value, and analytical posture  
-- Freeze repository roles and dependencies  
-- Prevent post-hoc reinterpretation of structure  
-
-**Produces:**  
-- Program-level constraints and contracts  
-
-**Prohibited:**  
-- Analysis of data  
-- Introduction of new analytical objects  
-
----
-
-### Repo 1 — Data Generation and Measurement Process  
+### Repo 1 — Data Generation and Measurement Process
 
 **Applied question:**  
 What do these data actually represent, and what limits do their recording and reporting processes place on interpretation?
@@ -149,7 +164,7 @@ How were the data recorded, reported, and structured as declared by the dataset 
 
 ---
 
-### Repo 2 — Canonical System Size Baselines  
+### Repo 2 — Canonical System Size Baselines
 
 **Applied question:**  
 What system size is typical for residential solar installations in California, given when and where they were installed?
@@ -160,10 +175,11 @@ What is the expected residential system size in a given context?
 **Responsibilities:**
 - Establish defensible size baselines  
 - Quantify uncertainty and temporal drift  
+- Materialize canonical baseline artifacts  
 
 **Produces:**  
 - Expected size distributions  
-- Uncertainty bounds  
+- System-keyed baseline artifacts  
 
 **Prohibited:**  
 - Structural interpretation  
@@ -172,7 +188,7 @@ What is the expected residential system size in a given context?
 
 ---
 
-### Repo 3 — Within-Size Structural Configuration  
+### Repo 3 — Within-Size Structural Configuration
 
 **Applied question:**  
 When two residential systems are similar in size, in what meaningful ways can their designs still differ?
@@ -181,6 +197,7 @@ When two residential systems are similar in size, in what meaningful ways can th
 When system size is held constant, what system characteristics vary in structured, non-trivial ways?
 
 **Responsibilities:**
+- Consume canonical baseline artifacts  
 - Identify structural degrees of freedom at fixed size  
 - Define configuration equivalence classes  
 
@@ -189,13 +206,14 @@ When system size is held constant, what system characteristics vary in structure
 - Admissible variation space  
 
 **Prohibited:**  
+- Re-derivation of upstream baselines  
 - Scaling analysis  
 - Regime formation  
 - Risk evaluation  
 
 ---
 
-### Repo 4 — Scaling Behavior, Regimes, and Deviation Structure  
+### Repo 4 — Scaling Behavior, Regimes, and Deviation Structure
 
 **Applied question:**  
 How does residential solar system size scale in practice, and what forms of deviation are typical versus unusual?
@@ -220,7 +238,7 @@ Given size and structure, how does system behavior scale, and where do stable re
 
 ---
 
-### Repo 5 — Abnormality, Directionality, and Sizing Risk Evaluation  
+### Repo 5 — Abnormality, Directionality, and Sizing Risk Evaluation
 
 **Applied question:**  
 Is a given residential solar system unusually sized for its context, and does that deviation plausibly indicate oversizing, undersizing, or benign variation?
@@ -243,23 +261,9 @@ Given regime-aware scaling behavior, how unusual is a system and in which direct
 
 ---
 
-## Architecture Diagram
-
-*A single visual diagram representing the analytical architecture is provided below for orientation.  
-The written specifications above constitute the authoritative definition of repository roles and constraints.*
-
-Repo 0 ──► Repo 1 ──► Repo 2 ──► Repo 3 ──► Repo 4 ──► Repo 5
-
-Repo 0: **Program Canon & Analytical Contracts**  
-Repo 1: **Data Generation & Measurement Process**  
-Repo 2: **Canonical System Size Baselines**  
-Repo 3: **Within-Size Structural Configuration**  
-Repo 4: **Scaling Behavior, Regimes & Deviation Structure**  
-Repo 5: **Abnormality, Directionality & Sizing Risk**
-
-
 ## Governing Invariant
 
-> **No repository is permitted to answer a question whose analytical preconditions have not already been settled upstream.**
+> **No repository is permitted to answer a question whose analytical preconditions — including required upstream artifacts — have not already been settled upstream.**
 
 This invariant governs all work in the *Tracking the Sun* program.
+
