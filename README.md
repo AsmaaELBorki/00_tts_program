@@ -1,4 +1,4 @@
-# Tracking the Sun (TTS) — Program Canon and Analytical Architecture
+# Tracking the Sun (TTS) Program Canon and Analytical Architecture
 
 ## The Question This Program Is Built to Answer
 
@@ -58,19 +58,28 @@ Repo 0 governs **how analysis is allowed to proceed**, but does not own data or 
 
 ### Canonical Artifacts Repository
 
-Serves as the **single source of truth for cross-repository analytical outputs**.
+Serves as the **canonical archival layer** for cross-repository analytical outputs.
 
 It:
-- stores canonical artifacts produced by upstream analytical repositories  
-- enforces continuity across analytical stages  
-- replaces manual cross-repo inputs with explicit data contracts  
+- stores frozen artifacts produced by upstream analytical repositories  
+- preserves agreed-upon analytical states for downstream reference  
+- enables continuity across analytical stages through explicit schemas, invariants, and documented handoffs  
 
-The artifacts repository:
-- contains no analysis or logic  
-- does not determine analytical questions  
-- freezes agreed-upon analytical results so downstream repositories can proceed without re-derivation or ambiguity  
+#### Current operational role
 
-Repo 0 and the Artifacts Repository together define the **constitutional layer** of the program.
+In the present implementation, the Artifacts Repository functions as an **authoritative archival store**, not as an executable dependency layer.
+
+- Analytical repositories do not programmatically ingest artifacts from this repository  
+- Inputs are staged locally within each repository  
+- Continuity across stages is enforced through schema discipline, invariant definitions, and explicit human-mediated handoffs  
+
+This design reflects a **research-stage workflow**, prioritizing analytical stability, inspection, and epistemic control over pipeline automation.
+
+#### Intended role
+
+In a productionized or extended version of *Tracking the Sun*, the Artifacts Repository would function as an executable dependency layer, replacing manual inputs with versioned data contracts and enforcing downstream continuity programmatically.
+
+This capability is intentionally deferred until analytical structures and invariants are fully stabilized.
 
 ---
 
