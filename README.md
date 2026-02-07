@@ -1,17 +1,18 @@
 # Tracking the Sun (TTS) Program Canon and Analytical Architecture
 
-## The Question This Program Is Built to Answer
+## The Program Answers The following Question: 
 
 **Given a residential solar installation in California, is this system sized appropriately for its context — or does it deviate in a way that plausibly indicates oversizing, undersizing, or elevated design risk?**
 
 Answering this question reliably is not trivial.  
-Raw system size alone is not informative without context: when the system was installed, where it is located, how residential systems typically scale, and how much design variation is normal at a given size all matter.
+Raw system size alone is not informative without context: installation time, location, typical scalability as well as normal design variation threshholds at a given size - all matter.
+
 
 This program is built to answer that question **systematically**, by decomposing it into ordered analytical steps that make deviation interpretable rather than arbitrary.
 
 ---
 
-## Where This Analysis Is Useful
+## Real World Applications: 
 
 The outputs of this program are applicable wherever **residential solar sizing decisions need to be evaluated, compared, or flagged without assuming intent or causality**, including:
 
@@ -25,16 +26,15 @@ It produces **context-aware signals** that help distinguish normal design variat
 
 ---
 
-## Purpose of This Repository
+## This Repository's Purpose: 
 
 This repository defines the **canonical analytical questions, scope, ordering, and logical constraints** of the *Tracking the Sun* program.
 
 It does **not** contain analysis or data products.
 
 Its role is to make explicit:
-- what questions are being asked  
-- why they are ordered the way they are  
-- what analytical preconditions govern downstream work  
+- Questions and their order. 
+- The analytical preconditions that govern downstream work  
 
 This repository exists so that all subsequent work can be understood as part of a **single, coherent analytical system**, rather than a collection of disconnected analyses.
 
@@ -178,7 +178,7 @@ Each analytical repository answers a **real-world applied question** and a corre
 
 ## Repository Stack (Canonical)
 
-### Repo 1 — Data Generation and Measurement Process
+### [Repo 1 — Data Generation & Measurement](https://github.com/AsmaaELBorki/01_tts_data.git)
 
 **Applied question:**  
 What do these data actually represent, and what limits do their recording and reporting processes place on interpretation?
@@ -201,7 +201,7 @@ How were the data recorded, reported, and structured as declared by the dataset 
 
 ---
 
-### Repo 2 — Canonical System Size Baselines
+### [Repo 2 — Canonical System Size Baseline](https://github.com/AsmaaELBorki/02_tts_baselines.git)
 
 **Applied question:**  
 What system size is typical for residential solar installations in California, given when and where they were installed?
@@ -225,7 +225,7 @@ What is the expected residential system size in a given context?
 
 ---
 
-### Repo 3 — Within-Size Structural Configuration
+### [Repo 3 — Within-Size Structural Configuration](https://github.com/AsmaaELBorki/03_tts_configuration.git)
 
 **Applied question:**  
 When two residential systems are similar in size, in what meaningful ways can their designs still differ?
@@ -250,7 +250,7 @@ When system size is held constant, what system characteristics vary in structure
 
 ---
 
-### Repo 4 — Scaling Behavior, Regimes, and Deviation Structure
+### [Repo 4 — Scaling Regimes & Deviation Geometry](https://github.com/AsmaaELBorki/04_tts_scaling.git)
 
 **Applied question:**  
 How does residential solar system size scale in practice, and what forms of deviation are typical versus unusual?
@@ -275,7 +275,7 @@ Given size and structure, how does system behavior scale, and where do stable re
 
 ---
 
-### Repo 5 — Abnormality, Directionality, and Sizing Risk Evaluation
+### [Repo 5 — Evaluation & Risk Surfaces](https://github.com/AsmaaELBorki/05_tts_abnormality_directionality_risk.git)
 
 **Applied question:**  
 Is a given residential solar system unusually sized for its context, and does that deviation plausibly indicate oversizing, undersizing, or benign variation?
