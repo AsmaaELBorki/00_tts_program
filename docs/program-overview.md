@@ -9,7 +9,7 @@ The purpose of this document is to explain **why the program is structured the w
 
 ---
 
-## Why Modularization Matters
+## Modularization: 
 
 The *Tracking the Sun* dataset is large, heterogeneous, and structurally uneven across time, geography, and reporting programs.
 
@@ -28,7 +28,7 @@ This makes reasoning **composable** rather than accumulative, and allows the pro
 
 ---
 
-## Why Separation Prevents Semantic Drift
+## Separation & Semantic Drift Prevention 
 
 As analytical work progresses, there is a natural tendency for:
 - variables to shift meaning
@@ -36,7 +36,7 @@ As analytical work progresses, there is a natural tendency for:
 - exceptions to become informal rules
 - early assumptions to be forgotten
 
-This phenomenon—semantic drift—is one of the primary sources of analytical error in long-lived projects.
+This phenomenon—semantic drift, is one of the primary sources of analytical error in long-lived projects.
 
 The program is explicitly separated into repositories so that:
 - meanings are fixed before they are reused
@@ -47,7 +47,7 @@ Separation ensures that concepts retain **stable meaning over time**, even as ne
 
 ---
 
-## Why Upstream / Downstream Discipline Exists
+## Upstream / Downstream Discipline
 
 Not all analytical questions are logically independent.
 
@@ -65,22 +65,16 @@ This prevents post-hoc justification and ensures that conclusions are conditiona
 
 ---
 
-## Why Canonical Artifacts Are Used
+## Canonical Artifacts
 
-As cross-repository dependencies increased, passing files manually between repositories became a source of ambiguity and semantic drift.
+The canonical artifacts repository exists to record and preserve promoted analytical results that are treated as stable reference points within the program.
 
-The canonical artifacts repository exists to:
-- freeze agreed-upon analytical results
-- enforce continuity across analytical stages
-- prevent silent modification of upstream outputs
-- make dependencies explicit rather than implicit
+While artifacts are not currently enforced as executable dependencies, their versioning and centralization serve to freeze analytical meaning at specific stages, making changes explicit rather than implicit and ensuring that downstream interpretation remains traceable.
 
-Artifacts do not introduce new logic or analytical authority.  
-They serve as a shared analytical memory, allowing downstream reasoning to proceed without re-derivation or reinterpretation.
 
 ---
 
-## Why Outputs Are Passed Unchanged
+## Outputs 
 
 Each repository produces outputs that are consumed downstream **without reinterpretation**.
 
@@ -93,13 +87,6 @@ By passing outputs unchanged:
 - errors are easier to locate
 - uncertainty remains visible
 - responsibility for interpretation is localized
-
-As the program matured, this principle was formalized through the introduction of a canonical artifacts repository.
-
-Not all outputs are passed downstream.  
-Only outputs that have been explicitly promoted to artifacts—because their grain, semantics, and ownership are stable—are treated as fixed inputs by downstream repositories.
-
-Exploratory or intermediate outputs remain local to their producing repository and are not relied upon elsewhere.
 
 If an output is insufficient, the correct response is to revise the upstream repository—not to patch the downstream one.
 
@@ -118,23 +105,6 @@ It evolved as the scope of inquiry expanded and the limitations of monolithic an
 The architecture is therefore not theoretical—it is **reactive to analytical pressure**.
 
 Each layer exists because proceeding without it led to ambiguity, fragility, or misinterpretation.
-
----
-
-## What This Document Is (and Is Not)
-
-This document:
-- explains design choices
-- records architectural intent
-- provides context for future modifications
-
-It does not:
-- define analytical rules
-- describe data properties
-- authorize inference
-- replace the canonical README
-
-Those functions live elsewhere by design.
 
 ---
 

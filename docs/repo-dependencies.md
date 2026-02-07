@@ -30,14 +30,9 @@ Only declared outputs that have been **promoted to canonical artifacts** are tru
 
 ## Program-Level Dependencies
 
-The *Tracking the Sun* program includes a **canonical artifacts repository** that mediates all cross-repository data dependencies.
+The canonical artifacts repository exists to record and preserve promoted analytical results that are treated as stable reference points within the program.
 
-The artifacts repository:
-- stores canonical analytical outputs produced upstream
-- replaces manual passing of files between repositories
-- enforces continuity by freezing agreed-upon results
-
-Analytical repositories depend on upstream repositories **via artifacts**, not via repo-local outputs.
+While artifacts are not currently enforced as executable dependencies, their versioning and centralization serve to freeze analytical meaning at specific stages, making changes explicit rather than implicit and ensuring that downstream interpretation remains traceable.
 
 ---
 
@@ -100,7 +95,6 @@ How can expected system size be defined descriptively and defensibly, including 
 - Repo 1 measurement constraints
 
 **Defines:**
-**Defines:**
 - expected system size distributions
 - temporal and contextual baselines
 - uncertainty bounds around size
@@ -127,7 +121,7 @@ What structural degrees of freedom exist at fixed size, and which variations are
 **Depends on:**
 - Repo 0 governance
 - Repo 1 measurement constraints
-- Repo 2 size baselines (via canonical artifacts)
+- Repo 2 size baselines 
 
 **Defines:**
 - configuration equivalence classes
@@ -149,12 +143,12 @@ Its outputs describe **structure conditional on size**, not outcomes.
 How do residential solar systems scale in practice, and where do stable regimes and deviation patterns emerge?
 
 **Analytical question:**  
-How does size interact with structure across time and geography to produce regime-like behavior?
+How does size interact with structure across time to produce regime-like behavior?
 
 **Depends on:**
 - Repo 0 governance
 - Repo 1 constraints
-- Repo 2 baselines (via artifacts)
+- Repo 2 baselines 
 - Repo 3 structural definitions
 
 **Defines:**
@@ -178,7 +172,7 @@ How likely is observed deviation, and when does it plausibly indicate sizing ris
 **Depends on:**
 - Repo 0 governance
 - Repo 1 measurement constraints
-- Repo 2–4 declared outputs (via canonical artifacts)
+- Repo 2–4 declared outputs 
 
 **Defines:**
 - abnormality measures

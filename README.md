@@ -1,6 +1,6 @@
 # Tracking the Sun (TTS) Program Canon and Analytical Architecture
 
-## The Program Answers The following Question: 
+## Core Analytical Question: 
 
 **Given a residential solar installation in California, is this system sized appropriately for its context — or does it deviate in a way that plausibly indicates oversizing, undersizing, or elevated design risk?**
 
